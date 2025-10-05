@@ -1,0 +1,40 @@
+{
+  "name": "sawalachat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@coreui/icons": "^3.0.1",
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.7.6",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "bot": "^0.0.3",
+    "coreui": "^0.1.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jquery": "^3.7.1",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.1.0",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "pino": "^9.3.2",
+    "puppeteer": "^23.1.0",
+    "qrcode-terminal": "^0.12.0",
+    "socket.io": "^4.7.4",
+    "twilio": "^5.2.2",
+    "venom": "^0.1.0",
+    "whatsapp-web.js": "^1.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "description": ""
+}

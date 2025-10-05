@@ -1,0 +1,83 @@
+<%- include('../../layout/header_em.ejs') %>
+<%- include('../../layout/sidebar_em.ejs') %>
+<div class="body flex-grow-1">
+        <div class="row mb-2">
+            <div class="card mb-4">
+                <div class="card-header"><strong>Data Pelanggan</strong><span class="small ms-1"></span></div>
+                <div class="card-body">
+                <p class="text-body-secondary small">Data pelanggan untuk segmentasi produk payment yang diinputkan oleh Oranger Loket</p>
+                <br>
+                <a href="/em/pelanggan/create" type="button" class="btn btn-primary"><span class="cil-plus "></span>Tambah Data</a>
+                <div class="example">
+                    <div class="tab-content rounded-bottom">
+                    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
+                        <table class="table table-striped dark">
+                            <thead class="table-primary">
+                              <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Id Pelanggan</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Alamat</th>
+                                <th scope="col">RT</th>
+                                <th scope="col">RW</th>
+                                <th scope="col">Kota</th>
+                                <th scope="col">Kecamatan</th>
+                                <th scope="col">Kelurahan</th>
+                                <th scope="col">Telepon</th>
+                                <th scope="col">Jenis Transaksi</th>
+                                <th scope="col">Jumlah Transaksi</th>
+                                <th scope="col">Besar Uang</th>
+                                <th scope="col">Tgl transaksi</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                              <% if(infos.length > 0 ){
+                                      for(let i = 0; i <infos.length; i++){
+                                           %>
+                                  <tr>
+                                    <td><%= i + 1 %></td>
+                                    <td><%= infos[i]['id_pelanggan'] %></td>
+                                    <td><%= infos[i]['nama'] %></td>
+                                    <td><%= infos[i]['alamat'] %></td>
+                                    <td><%= infos[i]['rt'] %></td>
+                                    <td><%= infos[i]['rw'] %></td>
+                                    <td><%= infos[i]['kota'] %></td>
+                                    <td><%= infos[i]['kecamatan'] %></td>
+                                    <td><%= infos[i]['kelurahan'] %></td>
+                                    <td><%= infos[i]['tlp'] %></td>
+                                    <td><%= infos[i]['jenis_transaksi'] %></td>
+                                    <td><%= infos[i]['jml'] %></td>
+                                    <td><%= infos[i]['bsu'] %></td>
+                                    <td><%= infos[i]['tgl_transaksi'] %></td>
+                                    <td>
+                                      <a href="/updatepelanggan/<%= infos[i]['id'] %>"  type="button" class="btn btn-warning">Update</a>
+                                      <a href="/deletepelanggan/<%= infos[i]['id'] %>" type="button" class="btn btn-danger">Delete</a>  
+                                      </td>
+                                    </tr>
+                                  </tr>
+                                  <%}}%>
+                              </tbody>
+                            </table>
+                    </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+            </nav>
+        </div>
+</div>
+<%- include('../../layout/footer.ejs') %>

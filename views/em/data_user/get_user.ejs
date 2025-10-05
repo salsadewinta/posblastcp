@@ -1,0 +1,71 @@
+<%- include('../../layout/header_em.ejs') %>
+<%- include('../../layout/sidebar_em.ejs') %>
+<div class="body flex-grow-1">
+        <div class="row mb-2">
+            <div class="card mb-4">
+                <div class="card-header"><strong>Kelola Data Pengguna</strong><span class="small ms-1"></span></div>
+                <div class="card-body">
+                <p class="text-body-secondary small">Pengguna Active yang terdaftar di aplikasi PosBlast y </p>
+                <br>
+                <a href="/em/data_user/create_user" type="button" class="btn btn-primary"><span class="cil-plus "></span>Tambah Data</a>
+                <div class="example">
+                    <div class="tab-content rounded-bottom">
+                    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
+                        <table class="table table-striped dark">
+                            <thead class="table-primary">
+                              <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Nippos</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Telepon</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                              <% if(users.length > 0 ){
+                                      for(let i = 0; i <users.length; i++){
+                                           %>
+                                  <tr>
+                                    <td><%= i + 1 %></td>
+                                    <td><%= users[i]['email'] %></td>
+                                    <td><%= users[i]['nip'] %></td>
+                                    <td><%= users[i]['fullname'] %></td>
+                                    <td><%= users[i]['tlp'] %></td>
+                                    <td><%= users[i]['username'] %></td>
+                                    <td><%= users[i]['password'] %></td>
+                                    <td><%= users[i]['role'] %></td>
+                                    <td>
+                                      <a href="/update_user/<%= users[i]['id'] %>"  type="button" class="btn btn-warning">Update</a>
+                                      <a href="/delete_user/<%= users[i]['id'] %>" type="button" class="btn btn-danger">Delete</a>  
+                                      </td>
+                                    </tr>
+                                  </tr>
+                                  <%}}%>
+                              </tbody>
+                            </table>
+                    </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+            </nav>
+        </div>
+</div>
+<%- include('../../layout/footer.ejs') %>

@@ -1,0 +1,44 @@
+<%- include('../../layout/header_em.ejs') %>
+<%- include('../../layout/sidebar_em.ejs') %>
+<div class="body flex-grow-1">
+    <div class="container-lg px-4">
+        <div class="row mb-2">
+            <form method="post" action="/updateuser/<%= users.id %>">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= users.email %>">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nippos</label>
+                  <input type="nip" name="nip" class="form-control" id="nip" aria-describedby="nip" value="<%= users.nip %>">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nama Lengkap</label>
+                    <input type="name" name="fullname" class="form-control" id="exampleInputEmail1" aria-describedby="name" value="<%= users.fullname %>">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Telepon</label>
+                    <input type="tlp" name="tlp" class="form-control" id="exampleInputEmail1" aria-describedby="telepon" value="<%= users.tlp %>">
+                  </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="username" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= users.username %>">
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" value="<%= users.password %>"> 
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Role</label>
+                    <input type="role" name="role" class="form-control" id="role" aria-describedby="role" value="<%= users.role %>">
+                  </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>
+<%- include('../../layout/footer.ejs') %>

@@ -1,0 +1,27 @@
+<%- include('../../layout/header_em.ejs') %>
+<%- include('../../layout/sidebar_em.ejs') %>
+<div class="body flex-grow-1">
+    <div class="container-lg px-4">
+        <div class="row mb-2">
+            <form class="row g-3" method="post" action="/createpesan" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Judul</label>
+                    <input type="title" class="form-control" id="title" placeholder="judulpesan" name="title">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Isi Pesan</label>
+                    <textarea class="form-control" id="pesan" rows="4" name="body"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Masukan foto/brosur</label>
+                    <input class="form-control" type="file" id="foto" name="foto" accept="image/*" multiple>
+                  </div>               
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../../layout/footer.ejs') %>

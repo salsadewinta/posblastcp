@@ -1,0 +1,26 @@
+<footer class="footer px-4">
+  <div class="ms-auto">PosBlast-V.0.1.2024</div>
+  </footer>
+</div>
+
+<script src="/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
+<script src="/simplebar/dist/simplebar.min.js"></script>
+<script>
+  const header = document.querySelector('header.header');
+  
+  document.addEventListener('scroll', () => {
+    if (header) {
+      header.classList.toggle('shadow-sm', document.documentElement.scrollTop > 0);
+    }
+  });
+  
+</script>
+<!-- Plugins and scripts required by this view-->
+<script src="/chart.js/dist/chart.umd.js"></script>
+<script src="/@coreui/chartjs/dist/js/coreui-chartjs.js"></script>
+<script src="/@coreui/utils/dist/umd/index.js"></script>
+<script src="/js/main.js"></script>
+<script> 
+</script>
+</body>
+</html>

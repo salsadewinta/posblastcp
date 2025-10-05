@@ -1,0 +1,48 @@
+<%- include('../../layout/header_em.ejs') %>
+<%- include('../../layout/sidebar_em.ejs') %>
+              <div class="body flex-grow-1">
+                <div class="container-lg px-4">
+                    <div class="row mb-2">
+                        <div class="card mb-4">
+                            <div class="card-header"><strong>Blast Your Message</strong><span class="small ms-1"></span></div>
+                            <div class="card-body">
+                            <h2>Pilih pesan yang ingin kamu kirim!</h2>
+                            <div class="example">
+                                <div class="tab-content rounded-bottom"> 
+                                    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
+                                        <form action="/createblastpooc" method="post" class="row g-3">
+                                            <div class="col-6">
+                                                <label for="inputState" class="form-label">Pilih Pesan</label>
+                                                <select id="inputState" name="messageId" class="form-select">
+                                                    <% messages.forEach(function(message) { %>
+                                                        <option value="<%= message._id %>"><%= message.title %></option>
+                                                    <% }); %>
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary">Kirim</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                              <li class="page-item disabled">
+                                <a class="page-link">Previous</a>
+                              </li>
+                              <li class="page-item"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                              </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+<%- include('../../layout/footer.ejs') %>

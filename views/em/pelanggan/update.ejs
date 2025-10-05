@@ -1,0 +1,162 @@
+<%- include('../../layout/header_em.ejs') %>
+<%- include('../../layout/sidebar_em.ejs') %>
+<div class="body flex-grow-1">
+    <div class="container-lg px-4">
+        <div class="row mb-2">
+            <form class="row g-3" method="post" action="/update_pelanggan/<%= infos._id %>">
+                <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Nama</label>
+                <input type="name" name="nama"  class="form-control" id="inputEmail4" value="<%= infos.nama %>">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPhone" class="form-label">Telepon</label>
+                    <input type="tel" name="tlp" class="form-control" id="inputPhone" placeholder="+62 812-3456-7890" pattern="[+][0-9]{1,3}[ ][0-9]{1,4}[-][0-9]{1,4}[-][0-9]{4}" value="<%= infos.tlp %>">
+                  </div> 
+                <div class="col-md-6">
+                    <label for="inputState" class="form-label">Jenis Transaksi</label>
+                    <select id="inputState" name="jenis_transaksi" class="form-select"  data-current-value="<%= infos.jenis_transaksi %>">
+                        <option selected></option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Jumlah Transaksi</label>
+                  <input type="number" name="jml" class="form-control" id="jml">
+                  </div>
+                <div class="col-md-6">
+                    <label for="inputZip" class="form-label">Besar Uang</label>
+                    <input type="text" name="bsu" class="form-control" id="inputZip" value="<%= infos.bsu %>">
+                </div>
+                <div class="col-12">
+                    <label for="currentDate" class="form-label">Tanggal Transaksi</label>
+                    <div class="row">
+                      <div class="col-sm-6 col-lg-5 mb-3 mb-sm-0">
+                        <input type="date" id="currentDate" name="tgl_transaksi" class="form-control" value="<%= infos.tgl_transaksi %>">
+                      </div>    
+                    </div>
+                  </div>
+                <div class="col-12">
+                <label for="inputAddress2" class="form-label">Alamat</label>
+                <input type="text" name="alamat" class="form-control" id="inputAddress2" value="<%= infos.alamat %>">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity" class="form-label">Kecamatan</label>
+                    <input type="text" name="kecamatan" class="form-control" id="inputCity" value="<%= infos.kecamatan %>">
+                    </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">RT</label>
+                    <input type="text" name="rt" class="form-control" id="inputZip" value="<%= infos.rt %>">
+                </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">RW</label>
+                    <input type="text" name="rw" class="form-control" id="inputZip" value="<%= infos.rw %>">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity" class="form-label">Kelurahan</label>
+                    <input type="text" name="kelurahan" class="form-control" id="inputCity" value="<%= infos.kelurahan %>">
+                    </div>
+                <div class="col-md-2">
+                <label for="inputZip" class="form-label">Kode Pos</label>
+                <input type="text" name="kodepos" class="form-control" id="inputZip" value="<%= infos.kodepos %>">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity" class="form-label">Kota</label>
+                    <input type="text" name="kota" class="form-control" id="inputCity" value="<%= infos.kota %>">
+                </div>
+                <div class="col-md-4">
+                    <label for="inputCity" class="form-label">Provinsi</label>
+                    <input type="text" name="provinsi" class="form-control" id="inputCity" value="<%= infos.provinsi %>">provinsi
+                </div>
+                <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                    Apakah sudah sesuai?
+                    </label>
+                </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function formatNumber(value) {
+      // Remove non-numeric characters (except for periods and commas)
+      const number = value.replace(/[^\d]/g, '');
+      // Add thousands separators
+      return number.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    document.getElementById('inputZip').addEventListener('input', function(event) {
+      const input = event.target;
+      const cursorPosition = input.selectionStart;
+      const value = input.value;
+
+      // Format the value and update the input
+      input.value = formatNumber(value);
+
+      // Restore cursor position after formatting
+      input.setSelectionRange(cursorPosition, cursorPosition);
+    });
+
+    document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const response = await fetch('/api/jenis_transaksi');
+      const transactions = await response.json();
+      const selectElement = document.getElementById('inputState');
+      const currentValue = selectElement.getAttribute('data-current-value');
+
+      transactions.forEach(transaction => {
+        const optGroup = document.createElement('optgroup');
+        optGroup.label = transaction.jenis_transaksi;
+
+        transaction.options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.value = option;
+          optionElement.textContent = option;
+
+          // Set selected attribute if the option matches the current value
+          if (option === currentValue) {
+            optionElement.selected = true;
+          }
+
+          optGroup.appendChild(optionElement);
+        });
+
+        selectElement.appendChild(optGroup);
+      });
+    } catch (error) {
+      console.error('Error fetching transactions:', error);
+    }
+  });
+  
+    document.getElementById('inputPhone').addEventListener('input', function(event) {
+    let input = event.target;
+    let value = input.value;
+
+    // Ensure the value always starts with +62
+    if (!value.startsWith('+62')) {
+      value = '+62' + value.replace(/[^\d]/g, ''); // Remove non-numeric characters except for the leading +
+    } else {
+      // Remove leading zeros after +62
+      value = '+62' + value.slice(3).replace(/^0+/, '').replace(/[^\d]/g, '');
+    }
+
+    // Update the input value
+    input.value = value;
+  });
+
+  // Prevent deletion of +62
+  document.getElementById('inputPhone').addEventListener('keydown', function(event) {
+    let input = event.target;
+    let value = input.value;
+
+    if (value.startsWith('+62') && input.selectionStart <= 3 && event.key === 'Backspace') {
+      event.preventDefault(); // Prevent deleting the +62 prefix
+    }
+  });
+  </script>
+<%- include('../../layout/footer.ejs') %>

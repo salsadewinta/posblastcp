@@ -1,0 +1,77 @@
+<%- include('../../layout/header_em.ejs') %>
+<%- include('../../layout/sidebar_em.ejs') %>
+<div class="body flex-grow-1">
+    <div class="container-lg px-4">
+        <div class="row mb-2">
+            <div class="card mb-4">
+                <div class="card-header"><strong>Data Pelanggan</strong><span class="small ms-1"></span></div>
+                <div class="card-body">
+                <p class="text-body-secondary small">Data pelanggan untuk segmentasi produk payment yang diinputkan oleh Oranger Loket</p>
+                <br>
+                <a href="/em/pelanggan/create" type="button" class="btn btn-primary"><span class="cil-plus "></span>Tambah Data</a>
+                <div class="example">
+                    <ul class="nav nav-underline-border" role="tablist">
+                            <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#" role="tab">
+                            <svg class="icon me-2">
+                                <use xlink:href="/@coreui/icons/sprites/free.svg#cil-media-play"></use>
+                            </svg>Raw data</a></li>
+                            <li class="nav-item"><a class="nav-link" data-coreui-toggle="tab" href="/csv" role="tab">
+                                <svg class="icon me-2">
+                                    <use xlink:href="/@coreui/icons/sprites/free.svg#cil-scala"></use>
+                                </svg>CSV</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/excel" target="_blank">
+                                <svg class="icon me-2">
+                                    <use xlink:href="/@coreui/icons/sprites/free.svg#cil-readme "></use>
+                                </svg>Excel</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pdf" target="_blank">
+                                <svg class="icon me-2">
+                                    <use xlink:href="/@coreui/icons/sprites/free.svg#cil-read-the-docs"></use>
+                                </svg>PDF</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content rounded-bottom">
+                    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
+                        <table class="table table-striped dark">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Judul Pesan</th>
+                                    <th scope="col">Tanggal Blast</th>
+                                    <th scope="col">Pelanggan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <% if(waUrls.length > 0 ){
+                                        for(let i = 0; i <waUrls.length; i++){
+                                             %>
+                                    <tr>
+                                      <td><%= i + 1 %></td>
+                                      <td><%= waUrls[i]['message'] %></td>
+                                      <td><%= waUrls[i]['sentAt'] %></td>
+                                      <td><%= waUrls[i]['customers'] %></td>
+                                      </tr>
+                                    </tr>
+                                    <%}}%>
+                                </tbody>
+                        </table>
+                    </div>
+                </div>  
+                </div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<%- include('../../layout/footer.ejs') %>
